@@ -9,6 +9,7 @@ public class Document : IDocument
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }
     public DateTime CreatedDated => DateTime.Now;
+    // public DateTime UpdatedDated => DateTime.Now;
 }
 
 
@@ -19,4 +20,5 @@ public interface IDocument
     string Id { get; set; }
 
     DateTime CreatedDated { get; }
+    // DateTime UpdatedDated { get; set; }
 }

@@ -40,11 +40,14 @@ public class MongoRepository<TDocument> : IMongoRepository<TDocument> where TDoc
 
     public async Task InsertDocument(TDocument document)
     {
+        // document.CreatedDated = DateTime.Now;
+        // document.UpdatedDated = DateTime.Now;
         await collectionName.InsertOneAsync(document);
     }
 
     public async Task UpdateDocument(TDocument document)
     {
+        // document.UpdatedDated = DateTime.Now;
         var filter = Builders<TDocument>.Filter.Eq(doc => doc.Id, document.Id);
         await collectionName.FindOneAndReplaceAsync(filter, document);
     }

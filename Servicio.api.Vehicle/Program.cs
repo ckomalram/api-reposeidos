@@ -3,12 +3,20 @@ using Servicio.api.Vehicle.Core.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// adding CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsRule", rule =>
+    {
+        rule.AllowAnyHeader().AllowAnyMethod().WithOrigins("*");
+    });
+});
 
 // conf mongo
 builder.Services.Configure<MongoSettings>(
