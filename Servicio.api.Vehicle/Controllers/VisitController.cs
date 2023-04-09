@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Servicio.api.Vehicle.Core.Entities;
 using Servicio.api.Vehicle.Core.Repository;
 
-namespace Servicio.api.offer.Controllers;
+namespace Servicio.api.Vehicle.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
