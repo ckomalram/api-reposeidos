@@ -33,3 +33,10 @@ Instalar librerías para JWT
 Crear clase JWT
 Inyectar con addscopre la clase token en program.cs
 Crear logica de token en el register.cs
+Crear clase Login
+Crear enpoint en controlador para login
+Crear clase user session
+Se inyecta usersesion al program.cs
+Crear CQRS de userSession
+Crear conf JWT en program.cs
+Crear enpoint para currentSession en controlador.

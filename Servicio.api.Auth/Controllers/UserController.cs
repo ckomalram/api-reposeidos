@@ -16,12 +16,11 @@ public class UserController : ControllerBase
         _mediator = mediator;
     }
 
-    // TODO:
-    //     [HttpGet]
-    // public async Task<ActionResult<UserDto>> Get()
-    // {
-    //     return await _mediator.Send(new UserCurrent.UserCurrentCommand());
-    // }
+    [HttpGet]
+    public async Task<ActionResult<UserDto>> GetUserSession()
+    {
+        return await _mediator.Send(new UserCurrent.UserCurrentCommand());
+    }
 
     [HttpPost("register")]
     public async Task<ActionResult<UserDto>> Register(Register.UserRegisterCommand parametros)
@@ -29,12 +28,11 @@ public class UserController : ControllerBase
         return await _mediator.Send(parametros);
     }
 
-    //TODO: 
-    // [HttpPost("login")]
-    // public async Task<ActionResult<UserDto>> Login(Login.UserLoginCommand parametros)
-    // {
-    //     return await _mediator.Send(parametros);
-    // }
+    [HttpPost("login")]
+    public async Task<ActionResult<UserDto>> Login(Login.UserLoginCommand parametros)
+    {
+        return await _mediator.Send(parametros);
+    }
 
 
 }
