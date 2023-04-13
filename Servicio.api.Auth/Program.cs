@@ -1,6 +1,10 @@
+using AutoMapper;
+using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Servicio.api.Auth.Core.Application;
 using Servicio.api.Auth.Core.Context;
 using Servicio.api.Auth.Core.Entities;
 
@@ -8,7 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+                .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<Register>());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -31,6 +36,14 @@ builder.Services.AddIdentityCore<User>().AddEntityFrameworkStores<SecurityContex
 
 // conf system clock: forma de obtener la hora actual y se utiliza en la autenticación de ASP.NET Core, en particular para validar los tokens JWT
 builder.Services.TryAddSingleton<ISystemClock, SystemClock>();
+
+// Useless for Register.class
+//conf mediaTR
+builder.Services.AddMediatR(typeof(Register.UserRegisterCommand).Assembly);
+//conf automapper
+builder.Services.AddAutoMapper(typeof(Register.UserRegisterHandler));
+
+
 
 var app = builder.Build();
 

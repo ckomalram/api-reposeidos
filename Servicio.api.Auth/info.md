@@ -1,4 +1,4 @@
-# 1.0.1
+# Parte # 1 Dev - Init
 
 - Crear proyecto
 - Instalar librerías
@@ -14,3 +14,22 @@
   - dotnet ef migrations add InitialCreate
 - Ejecutar Migracion
   - dotnet ef database update
+
+# Parte # 2 Dev - Implementando pattern CQRS
+
+Crear DTO
+Crear MappingProfile
+Instalar librerías FluentValidation
+Instalar librerías MediaTR
+Crear Register Class
+Inyectar a program.cs automapper
+Inyectar a program.cs mediatr
+Inyectar a program.cs fluentvalidation
+Crear controlador
+
+# Parte # 3 Dev - JWT en nuestros Microservices ( https://randomkeygen.com/)
+
+PENDIENTE: Instalar librerías JWT
+PENDIENTE: Crear JwtLogic Entity
+PENDIENTE: Implementar jwt en register class
+PENDIENTE: Crear endpoint en controlador de JWT
