@@ -7,6 +7,5 @@ public class UserDto
     public string Name { get; set; }
     public string LastName { get; set; }
 
-    // TODO:
-    // public string Token { get; set; }
+    public string Token { get; set; }
 }

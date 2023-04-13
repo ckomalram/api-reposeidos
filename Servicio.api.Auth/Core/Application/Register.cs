@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Servicio.api.Auth.Core.Context;
 using Servicio.api.Auth.Core.Dto;
 using Servicio.api.Auth.Core.Entities;
+using Servicio.api.Auth.Core.Entities.Jwt;
 
 namespace Servicio.api.Auth.Core.Application;
 
@@ -41,14 +42,14 @@ public class Register
         private readonly UserManager<User> _usermanager;
         private readonly IMapper _mapper;
 
-        // TODO:
-        // private readonly IJwtGenerator jwtgenerator;
+        private readonly IJwtGenerator _jwtgenerator;
 
-        public UserRegisterHandler(SecurityContext context, UserManager<User> manager, IMapper mapper)
+        public UserRegisterHandler(SecurityContext context, UserManager<User> manager, IMapper mapper, IJwtGenerator jwtgenerator)
         {
             _securityContext = context;
             _usermanager = manager;
             _mapper = mapper;
+            _jwtgenerator = jwtgenerator;
         }
         public async Task<UserDto> Handle(UserRegisterCommand request, CancellationToken cancellationToken)
         {
@@ -80,8 +81,7 @@ public class Register
             if (resp.Succeeded)
             {
                 var userDto = _mapper.Map<User, UserDto>(newUser);
-                // TODO:
-                // userDto.Token = jwtGenerator.CreateToken(newUser);
+                userDto.Token = _jwtgenerator.CreateToken(newUser);
                 return userDto;
             }
 

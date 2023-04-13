@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Servicio.api.Auth.Core.Application;
 using Servicio.api.Auth.Core.Context;
 using Servicio.api.Auth.Core.Entities;
+using Servicio.api.Auth.Core.Entities.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +43,9 @@ builder.Services.TryAddSingleton<ISystemClock, SystemClock>();
 builder.Services.AddMediatR(typeof(Register.UserRegisterCommand).Assembly);
 //conf automapper
 builder.Services.AddAutoMapper(typeof(Register.UserRegisterHandler));
+
+//conf token
+builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
 
 
 

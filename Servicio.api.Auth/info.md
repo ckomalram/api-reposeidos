@@ -29,7 +29,7 @@ Crear controlador
 
 # Parte # 3 Dev - JWT en nuestros Microservices ( https://randomkeygen.com/)
 
-PENDIENTE: Instalar librerías JWT
-PENDIENTE: Crear JwtLogic Entity
-PENDIENTE: Implementar jwt en register class
-PENDIENTE: Crear endpoint en controlador de JWT
+Instalar librerías para JWT
+Crear clase JWT
+Inyectar con addscopre la clase token en program.cs
+Crear logica de token en el register.cs
